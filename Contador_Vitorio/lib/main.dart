@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _contador = 0;
   String _infoText = 'Pode Entrar!';
-  
+
   void _changeContador(int numero) {
     setState(() {
       _contador += numero;
@@ -30,60 +30,66 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('MEU CONTADOR'),
-        centerTitle: true,
-      ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        appBar: AppBar(
+          title: Text('MEU CONTADOR'),
+          centerTitle: true,
+        ),
+        body: Stack(
           children: [
-            Text(
-              'Pessoa: $_contador',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40.0),
+            Image.asset(
+              "images/image_contador.jpg",
+              fit: BoxFit.cover,
+              height: 1000.0,
             ),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: TextButton(
-                    child: Text(
-                      '+1',
-                      style: TextStyle(fontSize: 40.0, color: Colors.black),
-                    ),
-                    onPressed: () {
-                      _changeContador(1);
-                    },
-                  ),
+                Text(
+                  'Pessoa: $_contador',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40.0),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: TextButton(
-                    child: Text(
-                      '-1',
-                      style: TextStyle(fontSize: 40.0, color: Colors.black),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: TextButton(
+                        child: Text(
+                          '+1',
+                          style: TextStyle(fontSize: 40.0, color: Colors.black),
+                        ),
+                        onPressed: () {
+                          _changeContador(1);
+                        },
+                      ),
                     ),
-                    onPressed: () {
-                      _changeContador(-1);
-                    },
-                  ),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: TextButton(
+                        child: Text(
+                          '-1',
+                          style: TextStyle(fontSize: 40.0, color: Colors.black),
+                        ),
+                        onPressed: () {
+                          _changeContador(-1);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
+                Text(
+                  _infoText,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 30.0),
+                )
               ],
             ),
-            Text(
-              _infoText,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 30.0),
-            )
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
